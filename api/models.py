@@ -30,3 +30,18 @@ class Jogo(models.Model):
 
     def __str__(self) -> str:
         return self.nome
+
+
+from django.contrib.auth.models import AbstractUser
+
+
+class CustomUser(AbstractUser):
+    is_admin = models.BooleanField(default=False)
+
+
+class Cliente(models.Model):
+    user = models.OneToOneField('CustomUser', on_delete=models.CASCADE)
+    nome = models.CharField(max_length=200)
+    cpf = models.CharField(max_length=14, unique=True)
+    data_nascimento = models.DateField()
+    cep = models.CharField(max_length=10)
