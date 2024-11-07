@@ -62,3 +62,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['username'] = self.user.username
 
         return data
+
+class JogoPorCategoriaSerializer(serializers.Serializer):
+    categoria = serializers.CharField(source="categoria__nome")
+    quantidade = serializers.IntegerField()

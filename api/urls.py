@@ -2,7 +2,7 @@
 from django.urls import include, path
 from rest_framework import routers
 
-from api.views import CategoriaViewSet, ClienteCriarView, CustomTokenObtainPairView, JogoViewSet
+from api.views import CategoriaViewSet, ClienteCriarView, CustomTokenObtainPairView, JogoPorCategoriaView, JogoViewSet
 
 
 router = routers.DefaultRouter()
@@ -15,4 +15,5 @@ urlpatterns = [
     path('cliente/cadastro/', ClienteCriarView.as_view(), name='registro_cliente'),
     path('login/', CustomTokenObtainPairView.as_view(), name="token_obtain_pair"),
     path('token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
+    path('jogos-por-categoria', JogoPorCategoriaView.as_view(), name='jogos_por_categoria')
 ]
